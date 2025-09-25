@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #fff8f0;
+    color: #404040;
+    line-height: 1.6;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+header,
+main,
+.datos,
+footer {
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* HEADER */
+header {
+    background: #e5e4e2;
+    width: 100%;
+    height: 100%;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    z-index: 1100;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .titulo {
+    color: #3877AA;
+    font-size: 40px;
+    position: relative;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Dancing Script', cursive;
+}
+
+/* MENU */
+#menu-toggle {
+    background: none;
+    border: none;
+    color: #3877AA;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2000;
+    position: fixed;
+    right: 20px;
+    top: 37px;
+}
+
+
+#menu-toggle:hover {
+    color: #003E71;
+}
+
+#menu {
+    position: fixed;
+    top: 70px;
+    /* justo debajo del toggle */
+    right: 5px;
+    background: rgba(56, 119, 170, 0.95);
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    /* más estrecho */
+    border-radius: 8px;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1100;
+}
+
+#menu svg path {
+    fill: white;
+}
+
+/* Mostrar menú */
+#menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Botones solo íconos */
+#menu button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#menu button:hover {
+    background-color: #003E71;
+    border-radius: 5px;
+}
+
+.datos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 224px;
+    height: 183px;
+    justify-content: center;
+    align-items: center;
+}
+
+.datos p {
+    width: 100%;
+    padding: 1.2vh 1.5vw;
+    margin: 15px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: #404040;
+    font-size: clamp(12px, 1.5vw, 14px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    top: 150px;
+    left: 660px;
+}
+
+.datos p:hover {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+
+}
+
+.LogOut {
+    position: fixed;
+    width: 38px;
+    height: 39px;
+    top: 30px;
+    right: 50px;
+    background: transparent;
+    color: #3877AA;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.LogOut:hover {
+    color: #003E71;
+}
+
+
+/* FOOTER GENERAL */
+footer {
+    background: #1e1e1e;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    justify-content: center;
+    position: fixed;
+    top: 650px;
+    bottom: -60;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* NOSOTROS REDES */
+.footer-nosotros {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 15px;
+}
+
+.footer-nosotros a {
+    color: #c9e7ff;
+    font-size: 25px;
+    padding: 5px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer-nosotros a:hover {
+    color: #3877AA;
+}
+
+/* copy */
+.copyright {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+}

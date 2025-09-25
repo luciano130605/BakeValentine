@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="login.css">
+    <link href="../../index/img/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="../../index/img/logo.png" rel="webssite icon" type="png">
+    <script type="module" src="cargar.js"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="../../index/img/logo.png" class="Logo" alt="Logo">
+
+        <!-- Formulario de login -->
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+
+        <button class="verPassword" onclick="verPassword()">
+            <i class="fa-solid fa-eye" id="toggleIcon"></i>
+        </button>
+        <button class="olvide_contraseña" onclick="forgotPassword()">Olvidé la contraseña</button>
+
+        <!-- Botón iniciar sesión -->
+        <button class="iniciar_sesion" id="loginBtn" onclick="loginUser()">
+            Iniciar sesión
+        </button>
+
+        <!-- Spinner de carga -->
+        <div id="loading" style="display:none; margin-top: 10px; text-align:center; color:#c9e7ff;">
+            <i class="fas fa-circle-notch fa-spin fa-3x"></i>
+            <p>Iniciando sesión</p>
+        </div>
+
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="no_cuenta">¿No tenés cuenta?</div>
+            <button class="registrarse" onclick="location.href='registro.html'">
+                registrarse
+            </button>
+        </footer>
+    </div>
+
+    <script>
+        async function loginUser() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (!email || !password) {
+                alert("Todos los campos son obligatorios");
+                return;
+            }
+
+            // Mostrar spinner y deshabilitar botón
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("loginBtn").disabled = true;
+
+            try {
+                const api = axios.create({
+                    baseURL: "http://127.0.0.1:3000",
+                    headers: { "Content-Type": "application/json" },
+                    withCredentials: true // necesa rio para cookies de sesión
+                });
+
+                const res = await api.post("/login", { email, password });
+
+                //alert(res.data.message);
+
+                // Redirigir al index después del login exitoso
+                location.href = "../../index/index.html";
+
+            } catch (err) {
+                alert(err.response?.data?.error || "Error en el login");
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("loginBtn").disabled = false;
+            }
+        }
+
+        function verPassword() {
+            const passwordInput = document.getElementById("password");
+            const toggleIcon = document.getElementById("toggleIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+        }
+
+        async function forgotPassword() {
+            const email = prompt("Ingresa tu email para restablecer la contraseña:");
+            if (!email) return;
+
+            try {
+                const api = axios.create({ baseURL: "http://127.0.0.1:3000" });
+                await api.post("/forgot-password", { email });
+                alert("Si el correo está registrado, recibirás un email con instrucciones");
+            } catch (err) {
+                alert("Ocurrió un error. Intenta nuevamente.");
+            }
+        }
+    </script>
+</body>
+
+</html>

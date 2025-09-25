@@ -1,0 +1,59 @@
+body {
+    background-color: #3877aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+}
+
+/* Input de nueva contraseña */
+#newPassword {
+    background: rgba(60, 162, 235, 0.2);
+    color: #50b6ff;
+    border: 1px solid #c9e7ff; /* borde bonito */
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Botón */
+#btn {
+    background: transparent;
+    color: #c9e7ff;
+    border: 2px solid #c9e7ff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100px;
+}
+
+#btn:hover {
+    background-color: #c9e7ff;
+    color: #3877aa;
+    border-radius: 20px;
+}
+
+#newPassword::placeholder {
+    color: #ffffff;  /* el color que quieras */
+    opacity: .5;       /* opcional: algunos navegadores lo hacen semitransparente por defecto */ /* opcional: para que sea cursiva */
+}
+
+@media screen and (max-width: 600px) {
+    #newPassword {
+        width: 90%; /* ocupa casi todo el ancho de la pantalla */
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    #btn {
+        width: 50%; /* ocupa casi todo el ancho */
+        font-size: 14px;
+        padding: 10px 0;
+    }
+}

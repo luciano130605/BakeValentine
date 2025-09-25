@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="registro.css">
+    <link href="../../index/img/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="../../index/img/logo.png" rel="webssite icon" type="png">
+    <script type="module" src="cargar.js"></script>
+    <title>Registro</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <div class="container">
+        <!-- Botón de volver -->
+
+        <!-- Logo -->
+        <img src="../../index/img/logo.png" class="Logo" alt="Logo">
+
+        <!-- Formulario de registro -->
+        <input type="text" id="nombreCompleto" placeholder="Nombre completo" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" required>
+
+        <!-- Mensaje sutil -->
+        <div id="mensajeRegistro" class="mensaje-sutil"></div>
+
+        <!-- Botón registrarse -->
+        <button class="iniciar_sesion" id="registerBtn">Registrarse</button>
+
+        <!-- Spinner de carga -->
+        <div id="loading" style="display:none; margin-top: 10px; text-align:center; color:#c9e7ff;">
+            <i class="fas fa-circle-notch fa-spin fa-3x"></i>
+
+        </div>
+
+        <footer>
+            <div class="no_cuenta">¿Ya tienes cuenta?</div>
+            <button class="registrarse" onclick="location.href='login.html'">
+                Iniciar sesión
+            </button>
+        </footer>
+    </div>
+
+    <script>
+        async function registerUser() {
+            const nombre = document.getElementById("nombreCompleto").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const mensaje = document.getElementById("mensajeRegistro");
+            const loading = document.getElementById("loading");
+            const registerBtn = document.getElementById("registerBtn");
+
+            mensaje.textContent = "";
+            mensaje.style.color = "#ff6b6b"; // rojo suave para errores
+
+            // Validaciones
+            if (!nombre || !email || !password || !confirmPassword) {
+                mensaje.textContent = "Por favor, completa todos los campos.";
+                return;
+            }
+
+            if (password.length < 4) {
+                mensaje.textContent = "La contraseña debe tener al menos 4 caracteres.";
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                mensaje.textContent = "Las contraseñas no coinciden.";
+                return;
+            }
+
+            // Mostrar spinner y deshabilitar botón
+            loading.style.display = "block";
+            registerBtn.disabled = true;
+
+            try {
+                const res = await axios.post("http://127.0.0.1:3000/register", { nombre, email, password });
+
+                mensaje.style.color = "#4caf50"; // verde para éxito
+                document.getElementById("loading").style.display = "block";
+                document.getElementById("registerBtn").disabled = true;
+
+                setTimeout(() => location.href = "../login/login.html", 1500);
+
+            } catch (err) {
+                mensaje.textContent = err.response?.data?.error || "Ocurrió un error durante el registro.";
+                loading.style.display = "none";
+                registerBtn.disabled = false;
+            }
+        }
+
+        // Asignar la función al botón
+        document.getElementById("registerBtn").addEventListener("click", registerUser);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="globals.css" />
+    <script type="module" src="js/buscar.js"></script>
+    <link rel="stylesheet" href="inicios.css">
+    <link href="img/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="img/logo.png" rel="webssite icon" type="png">
+    <link rel="stylesheet" href="carga.css">
+    <script type="module" src="js/cargar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="js/user.js"></script>
+    <script type="module" src="js/lupa,js"></script>
+    <script src="js/nav.js"></script>
+    <title>Inicio</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="img/logo.png" class="Logo" alt="Logo">
+            </div>
+
+            <div class="logo"></div>
+            <div class="div-links">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link active" data-section="inicio">Inicio</a></li>
+                    <li><a href="../footer/carrito/carrito.html" class="nav-link" data-section="about">Carrito</a></li>
+                    <li><a href="../footer/favoritos/favoritos.html" class="nav-link" data-section="about">Favoritos</a>
+                    </li>
+                    <li><a href="../footer/contacto/" class="nav-link" data-section="about">Contacto</a></li>
+                    <li><a href="../footer/usuario/usuario.html" class="nav-link" data-section="about">Usuario</a></li>
+            </div>
+
+            <div class="buscar">
+                <input id="Buscador" type="text" placeholder="Buscar cookies, tortas,..">
+                <button id="btn-buscar" class="buscarBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+
+    </header>
+
+
+
+    <!-- BLOQUE DE BIENVENIDA -->
+    <section class="bienvenido">
+        <div class="bienvenido-texto">
+            <h1>Bienvenido a Bake Valentine</h1>
+            <p>Descubre nuestros productos artesanales </p>
+            <button onclick="document.getElementById('Titulo-Productos').scrollIntoView({ behavior: 'smooth' });">
+                Ver Productos
+            </button>
+        </div>
+        <div class="pattern-icons">
+            <i class="fas fa-cookie"></i>
+            <i class="fas fa-birthday-cake"></i>
+            <i class="fas fa-mug-hot"></i>
+        </div>
+    </section>
+
+    <section class="destacados">
+        <h2>Productos Destacados</h2>
+        <div class="destacados-grid">
+            <div class="producto" style="background-image: url('img/pepa.jpg');"
+                onclick="abrirModal('Pepas','Masa suave de vainilla o chocolate con dulce de membrillo, batata o dulce de leche en la superficie.','../productos/pepas-y-scones/pepas-y-scones.html')">
+            </div>
+            <div class="producto" style="background-image: url('img/alfajor.jpeg');"
+                onclick="abrirModal('Alfajor de maicena','Deliciosa combinación de masa esponjosa y dulce de leche casero.','../productos/alfajor/alfajorMaicena.html')">
+            </div>
+            <div class="producto" style="background-image: url('img/cookieBlock.jpg');"
+                onclick="abrirModal('Cookies','Deliciosas cookies de chocolate o vainilla con sabores variados: kinder, red velvet, block, coco chips, brownie y más.','../productos/cookie/cookies.html')">
+            </div>
+        </div>
+    </section>
+
+    <div id="modal-destacado" class="modal">
+        <div class="modal-content">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <h3 id="modal-nombre"></h3>
+            <p id="modal-desc"></p>
+            <button id="modal-btn">Ver Producto</button>
+        </div>
+    </div>
+
+    <script>
+        // JS para abrir modal
+        function abrirModal(nombre, desc, url) {
+            document.getElementById('modal-nombre').innerText = nombre;
+            document.getElementById('modal-desc').innerText = desc;
+            const btn = document.getElementById('modal-btn');
+            btn.onclick = () => location.href = url;
+
+            const modal = document.getElementById('modal-destacado');
+            modal.classList.add('activo');
+        }
+
+        // JS para cerrar modal
+        function cerrarModal() {
+            const modal = document.getElementById('modal-destacado');
+            modal.classList.remove('activo');
+        }
+
+        // Cerrar modal si clickeas fuera
+        window.onclick = function (event) {
+            const modal = document.getElementById('modal-destacado');
+            if (event.target === modal) cerrarModal();
+        }
+
+        // Modal
+        const modalBox = document.getElementById('modal-box');
+        const btnModalBox = document.getElementById('btn-modal-box');
+        const spanCerrar = document.querySelector('.cerrar');
+
+        btnModalBox.onclick = () => {
+            modalBox.style.display = 'block';
+        }
+
+        spanCerrar.onclick = () => {
+            modalBox.style.display = 'none';
+        }
+
+        function cerrarModalBox() {
+            modalBox.style.display = 'none';
+        }
+
+        window.onclick = (e) => {
+            if (e.target == modalBox) {
+                modalBox.style.display = 'none';
+            }
+        }
+
+
+
+    </script>
+
+    <div class="Productos">
+        <h2 id="Titulo-Productos"> Nuestros productos</h2>
+
+        <div class="carrusel">
+            <div class="carrusel-track">
+                <button class="categoria" style="background-image: url('img/budin.jpeg');"
+                    onclick="location.href='../productos/budines/budines.html'">Budines</button>
+                <button class="categoria" style="background-image: url('img/torta.jpeg');"
+                    onclick="location.href='../productos/tortas/tortas.html'">Tortas</button>
+                <button class="categoria" style="background-image: url('img/muffins-y-cupcakes.png');"
+                    onclick="location.href='../productos/muffins-y-cupcakes/muffins-y-cupcakes.html'">Muffins y
+                    cupcakes</button>
+                <button class="categoria" style="background-image: url('img/alfajor.jpeg');"
+                    onclick="location.href='../productos/alfajores/alfajores.html'">Alfajores</button>
+                <button class="categoria" style="background-image: url('img/pepa.jpg');"
+                    onclick="location.href='../productos/pepas-y-scones/pepas-y-scones.html'">Pepas y scones</button>
+                <button class="categoria" style="background-image: url('img/cookie.jpeg');"
+                    onclick="location.href='../productos/cookie/cookies.html'">Cookies</button>
+                <button class="categoria" style="background-image: url('img/postre.jpeg');"
+                    onclick="location.href='../productos/postres/postres.html'">Postres</button>
+
+                <!-- duplicados para loop infinito -->
+                <button class="categoria" style="background-image: url('img/budin.jpeg');"
+                    onclick="location.href='../productos/budines/budines.html'">Budines</button>
+                <button class="categoria" style="background-image: url('img/torta.jpeg');"
+                    onclick="location.href='../productos/tortas/tortas.html'">Tortas</button>
+                <button class="categoria" style="background-image: url('img/muffins-y-cupcakes.png');"
+                    onclick="location.href='../productos/muffins-y-cupcakes/muffins-y-cupcakes.html'">Muffins y
+                    cupcakes</button>
+                <button class="categoria" style="background-image: url('img/alfajor.jpeg');"
+                    onclick="location.href='../productos/alfajores/alfajores.html'">Alfajores</button>
+                <button class="categoria" style="background-image: url('img/pepa.jpg');"
+                    onclick="location.href='../productos/pepas-y-scones/pepas-y-scones.html'">Pepas y scones</button>
+                <button class="categoria" style="background-image: url('img/cookie.jpeg');"
+                    onclick="location.href='../productos/cookie/cookies.html'">Cookies</button>
+                <button class="categoria" style="background-image: url('img/postre.jpeg');"
+                    onclick="location.href='../productos/postres/postres.html'">Postres</button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+
+        <div class="footer-nosotros">
+            <a href="https://wa.me/541131121121" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/bakevalentine" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Boedo,CABA" target="_blank"><i
+                    class="fas fa-map-marker-alt"></i></a>
+        </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Bake Valentine. Todos los derechos reservados.</p>
+
+    </footer>
+</body>
+
+</html>

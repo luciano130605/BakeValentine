@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="productoT.css" />
+        <title>Tortas y tartas</title>
+</head>
+
+<body>
+        <button class="atras" onclick="location.href='../../index/index.html'"><i
+                        class="fa-solid fa-arrow-left"></i></button>
+
+        <div class="large grid centered square-grid">
+                <h2 class="titulo">Tortas <span>y</span> tartas</h2>
+        </div>
+        <div class="buscador-contenedor">
+                <input type="text" id="Buscador" placeholder="Buscar pastafrola de membrillo, lemon pie,..">
+                <button id="btn-buscar">
+                        <i class="fas fa-search"></i>
+                </button>
+                <div id="mensaje" class="mensaje-busqueda"></div>
+        </div>
+
+        <script type="module" src="buscar.js"></script>
+
+        <div class="productos">
+                <button class="tortas" onclick="location.href='../tortas/tortaPastafrolaMembrillo.html'"><img
+                                src="tortaPastafrolaMembrillo.png">Pastafrola de membrillo</button>
+                <button class="tortas" onclick="location.href='../tortas/tortaPastafrolaBatata.html'"><img
+                                src="tortaPastafrolaBatata.png">Pastafrola de batata</button>
+                <button class="tortas" onclick="location.href='../tortas/tortaPastafrolaDdl.html'"><img
+                                src="tortaPastafrolaDdl.png">Pastafrola de dulce de leche</button>
+                <button class="tortas" onclick="location.href='../tortas/tartaCocoDdl.html'"><img
+                                src="tartaCocoDdl.png">Tarta de coco y dulce de leche</button>
+                <button class="tortas" onclick="location.href='../tortas/tartaRicota.html'"><img
+                                src="tartaRicota.png">Tarta de ricota</button>
+                <button class="tortas" onclick="location.href='../tortas/tartaRicotaDdl.html'"><img
+                                src="tartaRicotaDdl.png">Tarta de ricota con dulce de leche</button>
+                <button class="tortas" onclick="location.href='../tortas/lemonPie.html'"><img src="lemonPie.png">Lemon
+                        pie</button>
+                <button class="tortas" onclick="location.href='../tortas/chocotorta.html'"><img
+                                src="chocotorta.png">Chocotorta</button>
+                <button class="tortas" onclick="location.href='../tortas/brownieDdlMerengue.html'"><img
+                                src="brownieDdlMerengue.png">Brownie , dulce de leche y merengue</button>
+
+        </div>
+
+</body>
+
+<footer>
+        <button onclick="location.href='../../footer/carrito/carrito.html'"><i
+                        class="fas fa-cart-shopping"></i></button>
+        <button onclick="location.href='../footer/favoritos/favoritos.html'"><i class="fa-solid fa-heart"></i></button>
+        <button onclick="location.href='../../index/index.html'"><i class="fa-solid fa-house"></i></button>
+        <button onclick="location.href='../../footer/contacto/contacto.html'"><i
+                        class="fa-solid fa-envelope"></i></button>
+        <button onclick="location.href='../../footer/usuario/usuario.html'"><i class="fa-solid fa-user"></i></button>
+</footer>
+
+</html>

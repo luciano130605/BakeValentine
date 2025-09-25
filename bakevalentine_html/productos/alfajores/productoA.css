@@ -1,0 +1,296 @@
+.atras {
+  position: fixed;
+  width: 38px;
+  height: 39px;
+  top: 7px;
+  left: 9px;
+  background-color: #c9e7ff;
+  border-radius: 19.2px / 19.7px;
+  border: none;
+  cursor: pointer;
+}
+
+.fa-solid.fa-arrow-left {
+  color: #3877AA;
+}
+
+body {
+  background-color: #3877aa;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  width: 100vw;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.titulo {
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #c9e7ff;
+  font-size: 18px;
+  text-align: center;
+  /* centra el texto */
+  width: 100%;
+  /* ocupa todo el ancho disponible */
+  margin: 20px 0;
+  /* margen superior e inferior */
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 columnas */
+  grid-auto-rows: 150px;
+  /* altura de cada tarjeta */
+  gap: 15px;
+  /* espacio entre tarjetas */
+  justify-items: center;
+  margin-bottom: 30px;
+}
+
+.alfajores {
+  width: 100%;
+  max-width: 120px;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  /* texto abajo */
+  padding: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  background: linear-gradient(180deg, #3877AA 0%, #075a9e 100%);
+  color: #c9e7ff;
+  border: none;
+  outline: none;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover efecto */
+.alfajores:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.buscador-contenedor {
+  position: relative;
+  margin-top: 140px;
+  width: 90%;
+  max-width: 500px;
+  top: -100px;
+  display: flex;
+  z-index: 3;
+}
+
+#Buscador {
+  flex: 1;
+  background: #CAE7FF;
+  color: #404040;
+  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 10px 0 0 10px;
+  border: none;
+  outline: none;
+}
+
+#btn-buscar {
+  /* lupa */
+  background: #c9e7ff;
+  color: #3877aa;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  padding: 0 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+/* Responsive: en pantallas chicas pasar a 2 columnas */
+}
+
+@media (max-width: 600px) {
+
+  .atras {
+    width: 30px;
+    height: 30px;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+  }
+
+  .fa-solid.fa-arrow-left {
+    font-size: 14px;
+    /* achico el ícono para que quede centrado */
+  }
+
+  .titulo {
+    font-size: 16px;
+    position: relative;
+    top: 10px;
+    /* sube un poco el título */
+    margin: 15px 0;
+  }
+
+  .productos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+    gap: 30px;
+    width: 90%;
+    max-width: 100%;
+    position: relative;
+    top: 60px;
+    justify-items: center;
+    align-items: start;
+    /* que no pegue contra los bordes */
+  }
+
+  .alfajores {
+    width: 100%;
+    max-width: 160px;
+    /* tarjetas más anchas */
+    height: 100%;
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .alfajores img {
+    width: 70%;
+    height: auto;
+    margin-bottom: 5px;
+  }
+
+  footer {
+    height: 60px;
+  }
+
+  footer button {
+    font-size: 18px;
+
+  }
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 900px) {
+  .atras {
+    width: 34px;
+    height: 34px;
+    top: 6px;
+    left: 6px;
+    border-radius: 50%;
+  }
+
+  .fa-solid.fa-arrow-left {
+    font-size: 16px;
+  }
+
+  .titulo {
+    font-size: 18px;
+    position: relative;
+    top: 20px
+  }
+
+  .productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 140px;
+    gap: 50px;
+    width: 90%;
+    max-width: 95%;
+    position: relative;
+    top: 80px;
+    justify-items: center;
+    ;
+    align-items: start;
+  }
+
+  .alfajores {
+    max-width: 200px;
+    /* más ancho para llenar el espacio */
+    font-size: 13px;
+    height: 100%;
+    padding: 6px;
+  }
+
+  .alfajores img {
+    width: 75%;
+  }
+
+  footer {
+    height: 65px;
+  }
+
+  footer button {
+    font-size: 19px;
+  }
+}
+
+/* 🖥️ Desktop */
+@media (min-width: 901px) {
+  .titulo {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+  }
+
+  .productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 15px;
+    width: 100%;
+    max-width: 95%;
+    position: relative;
+    top: 100px;
+    justify-items: center;
+    align-items: start;
+  }
+
+  .alfajores {
+    width: 100%;
+    /* ocupa toda la columna */
+    max-width: 250px;
+    /* un poquito más ancha */
+    height: 100%;
+    /* llena toda la fila */
+    font-size: 14px;
+    padding: 8px;
+  }
+
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
+  height: 68px;
+  padding: 0;
+  left: 0;
+  width: 100%;
+  background-color: #003E71;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+footer button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+footer button:hover {
+  transform: scale(1.2);
+  color: #CAE7FF;
+}

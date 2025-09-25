@@ -1,0 +1,222 @@
+body {
+    background-color: #3877aa;
+    display: grid;
+    align-items: start;
+    width: 100vw;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+
+
+.atras {
+    position: fixed;
+    width: 38px;
+    height: 39px;
+    top: 7px;
+    left: 9px;
+    background-color: #c9e7ff;
+    border-radius: 19.2px / 19.7px;
+    border: none;
+    cursor: pointer;
+}
+
+.fa-solid.fa-arrow-left {
+    color: #3877AA;
+}
+
+
+.producto {
+    background: #CAE7FF;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    /* centra horizontal y vertical */
+    height: 50vh;
+    width: 100%;
+    margin-top: 50vh;
+    z-index: 1; 
+}
+
+.Nombre-producto {
+    color: #3877AA;
+    font-size: 22px;
+    /*justify-content: flex-start;  /* izquierda */
+    /* justify-content: center; */
+    /* centro */
+    /* justify-content: flex-end; */
+    /* derecha */
+}
+
+.tiempo {
+    display: flex;
+    align-items: center;
+    /* centra verticalmente texto e ícono */
+    justify-content: flex-start;
+    /* todo pegado a la izquierda */
+    gap: 5px;
+    width: 100%;
+    /* ocupa todo el ancho del contenedor */
+    color: #003E71;
+    font-size: 12px;
+}
+
+.descripcion {
+    display: flex;
+    flex-direction: column;
+    /* ahora los hijos se apilan uno abajo del otro */
+    align-items: flex-start;
+    /* los pega a la izquierda */
+    gap: 5px;
+    width: 100%;
+    color: #003E71;
+    font-size: 16px;
+}
+
+.descripcion .texto-descripcion {
+    color: #80A6C5;
+    font-size: 14px;
+}
+
+.precio-cantidad {
+    display: flex;
+    justify-content: space-between;
+    /* un bloque a la izquierda, otro a la derecha */
+    align-items: flex-end;
+    /* los alinea en el eje Y */
+    width: 100%;
+    margin-top: auto;
+    /* empuja el contenedor al fondo del producto */
+    padding-top: 10px;
+    /* opcional, separa del contenido superior */
+}
+
+
+.precio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* contenido a la izquierda */
+    gap: 0;
+    color: #003E71;
+    justify-self: start;
+    /* bloque a la izquierda dentro del grid */
+    align-self: end;
+    /* bloque al fondo dentro del grid */
+}
+
+.texto-precio {
+    color: #3877AA;
+    margin: 0;
+}
+
+.cantidad {
+    display: flex;
+    align-items: flex-start;
+    /* contenido a la izquierda */
+    gap: 5px;
+    color: #003E71;
+    justify-self: end;
+    /* bloque a la izquierda dentro del grid */
+    align-self: end;
+    /* bloque al fondo dentro del grid */
+}
+
+.menos {
+    background-color: #3877AA;
+    /* color de fondo */
+    border: none;
+    /* borde oscuro */
+    border-radius: 8px;
+    /* bordes redondeados */
+    padding: 8px 12px;
+    /* espacio interno */
+    cursor: pointer;
+    /* mano al pasar el mouse */
+    display: flex;
+    /* para centrar el ícono */
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-solid.fa-minus {
+    color: #CAE7FF;
+    /* color del ícono */
+    font-size: 16px;
+    pointer-events: none;
+    /* para que el clic sea en el botón, no en el ícono */
+}
+
+.mas {
+    background-color: #3877AA;
+    /* color de fondo */
+    border: none;
+    /* borde oscuro */
+    border-radius: 8px;
+    /* bordes redondeados */
+    padding: 8px 12px;
+    /* espacio interno */
+    cursor: pointer;
+    /* mano al pasar el mouse */
+    display: flex;
+    /* para centrar el ícono */
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-solid.fa-plus {
+    color: #CAE7FF;
+    /* color del ícono */
+    font-size: 16px;
+    pointer-events: none;
+    /* para que el clic sea en el botón, no en el ícono */
+}
+
+.menos:hover, .mas:hover {
+    border-radius:30px;
+}
+
+.cantidad-numero {
+    font-size: 18px;
+    position: relative;
+    top: 8px;
+}
+
+.carrito {
+    display: flex;
+    align-items: flex-start;
+    justify-self: center;
+    /* bloque a la izquierda dentro del grid */
+    align-self: center;  
+
+}
+
+.agregar-carrito {
+    color: #3877AA;
+    background: transparent;
+    border: 1px solid #003E71;
+    border-radius:10px;
+    padding:10px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, border-radius 0.3s;
+}
+
+.agregar-carrito:hover {
+    /* mantenemos el borde para no cambiar el tamaño */
+    border: 1px solid #003E71; 
+    background-color: #003E71;
+    border-radius: 20px; /* igual al inicial */
+    color: #CAE7FF;
+}
+
+#img {
+    position: absolute;       /* libre posicionamiento */
+    top: 0;                   
+    left: 0;
+    width: 100%;              /* ancho total del contenedor padre */
+    height: 52vh;             /* ocupa mitad de la pantalla */
+    z-index: 2;               
+    object-fit: cover;        /* recorta lo necesario para llenar */
+    border-top-left-radius: 15px;  /* para que coincida con el borde del producto */
+    border-top-right-radius: 15px;
+}

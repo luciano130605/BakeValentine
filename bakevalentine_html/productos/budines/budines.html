@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="productoB.css" />
+        <script type="module" src="buscar.js"></script>
+        <title>Budínes</title>
+</head>
+
+<body>
+        <button class="atras" onclick="location.href='../../index/index.html'"><i
+                        class="fa-solid fa-arrow-left"></i></button>
+
+        <div class="large grid centered square-grid">
+                <h2 class="titulo">Budínes</h2>
+        </div>
+        <div class="buscador-contenedor">
+                <input type="text" id="Buscador" placeholder="Buscar budin de vainilla, budin marmolado,..">
+                <button id="btn-buscar">
+                        <i class="fas fa-search"></i>
+                </button>
+                <div id="mensaje" class="mensaje-busqueda"></div>
+        </div>
+
+
+        <div class="productos">
+                <button class="budines" onclick="location.href='../budines/budinVainilla.html'"><img
+                                src="budinVainilla.png">Budín de vainilla</button>
+                <button class="budines" onclick="location.href='../budines/budinChocolate.html'"><img
+                                src="budinChocolate.png">Budín de chocolate</button>
+                <button class="budines" onclick="location.href='../budines/budinChocolateChips.html'"><img
+                                src="budinChocolateChips.png">Budín de chocolate con chips</button>
+                <button class="budines" onclick="location.href='../budines/budinMarmolado.html'"><img
+                                src="budinMarmolado.png">Budín marmolado</button>
+                <button class="budines" onclick="location.href='../budines/budinLimon.html'"><img
+                                src="budinLimon.png">Budín de limón con glase</button>
+                <button class="budines" onclick="location.href='../budines/budinNaranja.html'"><img
+                                src="budinNaranja.png">Budín de naranja con glase</button>
+                <button class="budines" onclick="location.href='../budines/budinBanana.html'"><img
+                                src="budinBanana.png">Budín de banana con chips</button>
+
+        </div>
+
+</body>
+
+<footer>
+        <button onclick="location.href='../../footer/carrito/carrito.html'"><i
+                        class="fas fa-cart-shopping"></i></button>
+        <button onclick="location.href='../footer/favoritos/favoritos.html'"><i class="fa-solid fa-heart"></i></button>
+        <button onclick="location.href='../../index/index.html'"><i class="fa-solid fa-house"></i></button>
+        <button onclick="location.href='../../footer/contacto/contacto.html'"><i
+                        class="fa-solid fa-envelope"></i></button>
+        <button onclick="location.href='../../footer/usuario/usuario.html'"><i class="fa-solid fa-user"></i></button>
+</footer>
+
+</html>

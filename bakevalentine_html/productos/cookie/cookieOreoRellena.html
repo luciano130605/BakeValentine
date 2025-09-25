@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="cookies.css" />
+    <title>Cookie de oreo rellena</title>
+</head>
+
+<body>
+    <button class="atras" onclick="location.href='../cookie/cookies.html'"><i
+            class="fa-solid fa-arrow-left"></i></button>
+
+    <div class="producto">
+        <h2 class="Nombre-producto"> Cookie de oreo rellena</h2>
+        <div class="tiempo">
+            <i class="fa-solid fa-clock"></i>
+            <p class="Tiempo-entrega"> Tiempo de entrega: 2 a 3 días </p>
+        </div>
+        <div class="descripcion"> Descripción
+            <p class="texto-descripcion"> Cookie de vainilla con oreo, rellena de ganache. </p>
+        </div>
+
+        <div class="precio-cantidad">
+            <div class="precio"> Total
+                <p class="texto-precio">$3500</p>
+            </div>
+
+            <div class="cantidad">
+                <button class="menos"><i class="fa-solid fa-minus"></i></button>
+                <span class="cantidad-numero">1</span>
+                <button class="mas"><i class="fa-solid fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="carrito">
+            <button class="agregar-carrito">Agregar <i class="fa-solid fa-cart-shopping"></i></button>
+        </div>
+
+
+        <script>
+            const precioUnitario = 3500; // Precio del producto
+            const nombreProducto = "Cookie de oreo rellena"; // Nombre del producto
+            let cantidad = 1; // Cantidad inicial
+
+            // Elementos
+            const cantidadSpan = document.querySelector('.cantidad-numero');
+            const totalSpan = document.querySelector('.texto-precio');
+            const botonMas = document.querySelector('.mas');
+            const botonMenos = document.querySelector('.menos');
+            const btnAgregar = document.querySelector('.agregar-carrito'); // Ahora sí definido
+
+            // Función para actualizar total
+            function actualizarTotal() {
+                cantidadSpan.textContent = cantidad;
+                totalSpan.textContent = `$${precioUnitario * cantidad}`;
+            }
+
+            // Eventos + y -
+            botonMas.addEventListener('click', () => { cantidad++; actualizarTotal(); });
+            botonMenos.addEventListener('click', () => { if (cantidad > 1) { cantidad--; actualizarTotal(); } });
+
+            actualizarTotal();
+
+            // Evento agregar al carrito
+            btnAgregar.addEventListener('click', () => {
+                const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+                // Buscar si el producto ya está
+                const index = carrito.findIndex(item => item.nombre === nombreProducto);
+                if (index > -1) {
+                    carrito[index].cantidad += cantidad;
+                    carrito[index].total = carrito[index].cantidad * carrito[index].precioUnitario;
+                } else {
+                    carrito.push({
+                        nombre: nombreProducto,
+                        precioUnitario: precioUnitario,
+                        cantidad: cantidad,
+                        total: precioUnitario * cantidad
+                    });
+                }
+
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                alert("Producto agregado al carrito!");
+            });
+        </script>
+
+
+
+
+    </div>
+
+</body>
+
+</html>
+
+</body>
+
+</html>

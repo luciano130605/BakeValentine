@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="carrito.css">
+  <title>Carrito</title>
+</head>
+
+<body>
+
+  <button class="atras" onclick="location.href='../../index/index.html'"><i class="fa-solid fa-arrow-left"></i></button>
+
+  <h1 id="titulo">Carrito</h1>
+
+  <div class="total-conteiner">
+    <div id="lista-carrito"></div>
+    <p><span id="total-final">$0</span></p>
+    <button class="pagar" onclick="location.href='../pagar/pagar.html'"> <p class="pagar-txt">Pagar</p> </button>
+  </div>
+  <script>
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalFinalSpan = document.getElementById('total-final');
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function renderCarrito() {
+      listaCarrito.innerHTML = '';
+      let totalFinal = 0;
+
+      carrito.forEach((item, index) => {
+        const productoDiv = document.createElement('div');
+        productoDiv.classList.add('producto');
+
+        // Columna izquierda: nombre + precio
+        const izquierdaDiv = document.createElement('div');
+        izquierdaDiv.classList.add('izquierda');
+
+        const nombreDiv = document.createElement('div');
+        nombreDiv.classList.add('nombre');
+        nombreDiv.textContent = item.nombre;
+        izquierdaDiv.appendChild(nombreDiv);
+
+        const precioDiv = document.createElement('div');
+        precioDiv.classList.add('precio');
+        precioDiv.textContent = `$${item.total}`;
+        izquierdaDiv.appendChild(precioDiv);
+
+        productoDiv.appendChild(izquierdaDiv);
+
+        // Columna derecha: cantidad + tacho
+        const derechaDiv = document.createElement('div');
+        derechaDiv.classList.add('derecha');
+
+        const cantidadDiv = document.createElement('div');
+        cantidadDiv.textContent = `Cant: ${item.cantidad}`;
+        derechaDiv.appendChild(cantidadDiv);
+
+        const btnEliminar = document.createElement('button');
+        btnEliminar.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        btnEliminar.classList.add('eliminar');
+        btnEliminar.addEventListener('click', () => {
+          eliminarProducto(index);
+        });
+        derechaDiv.appendChild(btnEliminar);
+
+        productoDiv.appendChild(derechaDiv);
+
+        listaCarrito.appendChild(productoDiv);
+
+        totalFinal += item.total;
+      });
+
+
+      totalFinalSpan.textContent = `$${totalFinal}`;
+    }
+
+    function eliminarProducto(index) {
+      carrito.splice(index, 1); // saca ese producto del array
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      renderCarrito(); // vuelve a dibujar la lista
+    }
+
+    renderCarrito();
+  </script>
+</body>
+
+</html>

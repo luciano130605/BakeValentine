@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="usuario.css">
+    <link href="../../index/img/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="../../index/img/logo.png" rel="webssite icon" type="png">
+    <script type="module" src="cargar.js"></script>
+</head>
+
+<body>
+
+    <header id="header">
+        <h2 class="titulo">Usuario</h2>
+        <button id="menu-toggle"><i class="fas fa-bars"></i></button>
+        <div id="menu">
+            <button onclick="location.href='../../index/index.html'">
+                <i class="fa-solid fa-house"></i>
+            </button>
+            <button onclick="location.href='../footer/carrito/carrito.html'"><i
+                    class="fas fa-cart-shopping"></i></button>
+            <button onclick="location.href='../footer/favoritos/favoritos.html'"><i
+                    class="fa-solid fa-heart"></i></button>
+            <button onclick="location.href='../footer/contacto/contacto.html'">
+                <i class="fa-solid fa-envelope"></i>
+            </button>
+            <button id="user-btn" onclick="goToUser()"><i class="fa-jelly fa-regular fa-user"></i></button>
+        </div>
+    </header>
+
+    <button class="LogOut" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i></button>
+    <div id="mensajeLogout"></div>
+
+    <div class="datos">
+        <p id="nombre">Nombre completo</p>
+        <p id="email">Email</p>
+        <p id="password">*******</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
+
+            toggleBtn.addEventListener('click', () => {
+                menu.classList.toggle('show');
+            });
+        // Cerrar sesión
+        async function LogOut() {
+            const mensajeDiv = document.getElementById("mensajeLogout");
+            const btn = document.getElementById("logoutBtn");
+            btn.disabled = true;
+            mensajeDiv.textContent = "Cerrando sesión... ⏳";
+
+            try {
+                await axios.post("http://127.0.0.1:3000/logout", {}, { withCredentials: true });
+                mensajeDiv.textContent = "Sesión cerrada";
+                mensajeDiv.style.color = "#4caf50";
+                setTimeout(() => location.href = "../../index/index.html", 1500);
+            } catch (err) {
+                mensajeDiv.textContent = err.response?.data?.error || "Error al cerrar sesión";
+                mensajeDiv.style.color = "#ff6b6b";
+                btn.disabled = false;
+            }
+        }
+
+        // Cargar datos del usuario
+        async function cargarUsuario() {
+            const nombreP = document.getElementById("nombre");
+            const emailP = document.getElementById("email");
+            const passwordP = document.getElementById("password");
+
+            try {
+                const response = await axios.get("http://127.0.0.1:3000/usuario", { withCredentials: true });
+                const usuario = response.data;
+
+                nombreP.textContent = usuario.nombre || "Sin nombre";
+                emailP.textContent = usuario.email || "Sin email";
+                passwordP.textContent = "*******"; // contraseña siempre oculta
+
+            } catch (err) {
+                console.error(err);
+                nombreP.textContent = "Error al cargar usuario";
+                emailP.textContent = "-";
+                passwordP.textContent = "-";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarUsuario();
+            document.getElementById("logoutBtn").addEventListener("click", LogOut);
+        });
+    </script>
+</body>
+
+<footer>
+
+    <div class="footer-nosotros">
+        <a href="https://wa.me/541131121121" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/bakevalentine" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Boedo,CABA" target="_blank"><i
+                class="fas fa-map-marker-alt"></i></a>
+    </div>
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2025 Bake Valentine. Todos los derechos reservados.</p>
+
+</footer>
+
+</html>

@@ -1,0 +1,86 @@
+body {
+    background-color: #3877aa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centra verticalmente */
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    color: #c9e7ff;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* Mensaje principal */
+.productoIn {
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    font-size: 1.8rem; /* más compacto */
+    margin: 10px 0; /* menos margen */
+}
+
+/* Mensaje secundario */
+.submensaje {
+    font-size: 1rem;
+    margin: 5px 0; /* menos espacio */
+    color: #c9e7ffaa; /* más transparente */
+}
+
+/* Botón flotante */
+.btn-home {
+    position: fixed;
+    bottom: 20px; /* más cerca de la base */
+    right: 20px;
+    background-color: #003E71;
+    color: #CAE7FF;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+    transform: scale(1.2);
+    color:#CAE7FF;
+}
+
+
+/* Tablet (max-width 768px) */
+@media (max-width: 768px) {
+    .productoIn {
+        font-size: 1.5rem;
+    }
+    .submensaje {
+        font-size: 0.95rem;
+    }
+    .btn-home {
+        padding: 10px 16px;
+        font-size: 1.2rem;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* Móvil (max-width 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    .productoIn {
+        font-size: 1.3rem;
+    }
+    .submensaje {
+        font-size: 0.9rem;
+    }
+    .btn-home {
+        padding: 8px 14px;
+        font-size: 1rem;
+        bottom: 12px;
+        right: 12px;
+    }
+}
