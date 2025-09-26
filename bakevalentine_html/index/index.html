@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="carga.css">
     <script type="module" src="js/cargar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="js/user.js"></script>
     <script type="module" src="js/lupa,js"></script>
     <script src="js/nav.js"></script>
     <title>Inicio</title>
@@ -21,30 +20,42 @@
 </head>
 
 <body>
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="img/logo.png" class="Logo" alt="Logo">
-            </div>
-
-            <div class="logo"></div>
-            <div class="div-links">
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html" class="nav-link active" data-section="inicio">Inicio</a></li>
-                    <li><a href="../footer/carrito/carrito.html" class="nav-link" data-section="about">Carrito</a></li>
-                    <li><a href="../footer/favoritos/favoritos.html" class="nav-link" data-section="about">Favoritos</a>
-                    </li>
-                    <li><a href="../footer/contacto/" class="nav-link" data-section="about">Contacto</a></li>
-                    <li><a href="../footer/usuario/usuario.html" class="nav-link" data-section="about">Usuario</a></li>
-            </div>
-
-            <div class="buscar">
-                <input id="Buscador" type="text" placeholder="Buscar cookies, tortas,..">
-                <button id="btn-buscar" class="buscarBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+    <header id="header">
+        <img src="img/logo.png" alt="logo">
+        <button id="menu-toggle"><i class="fas fa-bars"></i></button>
+        <div id="menu">
+            <button onclick="location.href='../../index/index.html'"><i class="fa-solid fa-house"></i></button>
+            <button onclick="location.href='../footer/carrito/carrito.html'"><i
+                    class="fas fa-cart-shopping"></i></button>
+            <button onclick="location.href='../footer/favoritos/favoritos.html'"><i
+                    class="fa-solid fa-heart"></i></button>
+            <button onclick="location.href='../footer/contacto/contacto.html'"><i
+                    class="fa-solid fa-envelope"></i></button>
+            <button id="user-btn">
+                <i id="user-icon" class="fa-solid fa-right-to-bracket"></i>
+            </button>
         </div>
-
     </header>
+
+    <script>
+        const toggleBtn = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        toggleBtn.addEventListener("click", () => menu.classList.toggle("show"));
+    </script>
+
+    <script type="module">
+        import { goToUser, updateUserIcon } from "./js/user.js";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // click en el ícono
+            const userBtn = document.getElementById("user-btn");
+            if (userBtn) userBtn.addEventListener("click", goToUser);
+
+            // actualizar ícono al cargar
+            updateUserIcon();
+        });
+    </script>
+
 
 
 
@@ -134,9 +145,6 @@
                 modalBox.style.display = 'none';
             }
         }
-
-
-
     </script>
 
     <div class="Productos">

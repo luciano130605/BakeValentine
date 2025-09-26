@@ -10,8 +10,70 @@
 </head>
 
 <body>
-        <button class="atras" onclick="location.href='../../index/index.html'"><i
-                        class="fa-solid fa-arrow-left"></i></button>
+
+            <header id="header">
+        <img src="img/logo.png" alt="logo">
+        <button id="menu-toggle"><i class="fas fa-bars"></i></button>
+        <div id="menu">
+            <button onclick="location.href='../../index/index.html'">
+                <i class="fa-solid fa-house"></i>
+            </button>
+            <button onclick="location.href='../footer/carrito/carrito.html'"><i
+                    class="fas fa-cart-shopping"></i></button>
+            <button onclick="location.href='../footer/favoritos/favoritos.html'"><i
+                    class="fa-solid fa-heart"></i></button>
+            <button onclick="location.href='../footer/contacto/contacto.html'">
+                <i class="fa-solid fa-envelope"></i></button>
+            </button>
+            <button id="user-btn" onclick="goToUser()"><i id="user-icon"
+                    class="fa-solid fa-right-to-bracket"></i></button>
+        </div>
+
+        <script>
+
+            const toggleBtn = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
+
+            toggleBtn.addEventListener('click', () => {
+                menu.classList.toggle('show');
+            });
+
+            async function updateUserIcon() {
+                try {
+                    const res = await axios.get("http://127.0.0.1:3000/check-session", { withCredentials: true });
+                    const userIcon = document.getElementById("user-icon");
+
+                    if (res.data.logged) {
+                        userIcon.className = "fa-solid fa-user"; // 👤 usuario logueado
+                    } else {
+                        userIcon.className = "fa-solid fa-right-to-bracket"; // 🔑 sin sesión
+                    }
+                } catch (err) {
+                    console.error("Error al verificar sesión:", err.message);
+                }
+            }
+
+            async function goToUser() {
+                try {
+                    const res = await axios.get("http://127.0.0.1:3000/check-session", { withCredentials: true });
+                    if (res.data.logged) {
+                        location.href = "../footer//usuario/usuario.html";
+                    } else {
+                        location.href = "../footer/login/login.html";
+                    }
+                } catch (err) {
+                    // si falla, lo mando al login por defecto
+                    location.href = "../footer//login/login.html";
+                }
+            }
+
+            // cuando cargue el index, pregunto al backend y seteo el ícono
+            document.addEventListener("DOMContentLoaded", updateUserIcon);
+
+        </script>
+
+    </header>
+
 
         <div class="large grid centered square-grid">
                 <h2 class="titulo">Pepas <span>y</span> scones</h2>
@@ -41,14 +103,6 @@
 
 </body>
 
-<footer>
-        <button onclick="location.href='../../footer/carrito/carrito.html'"><i
-                        class="fas fa-cart-shopping"></i></button>
-        <button onclick="location.href='../footer/favoritos/favoritos.html'"><i class="fa-solid fa-heart"></i></button>
-        <button onclick="location.href='../../index/index.html'"><i class="fa-solid fa-house"></i></button>
-        <button onclick="location.href='../../footer/contacto/contacto.html'"><i
-                        class="fa-solid fa-envelope"></i></button>
-        <button onclick="location.href='../../footer/usuario/usuario.html'"><i class="fa-solid fa-user"></i></button>
-</footer>
+
 
 </html>

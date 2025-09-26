@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="login.css">
     <link href="../../index/img/logo.png" rel="shortcut icon" type="image/x-icon">
     <link href="../../index/img/logo.png" rel="webssite icon" type="png">
@@ -38,6 +39,30 @@
             <i class="fas fa-circle-notch fa-spin fa-3x"></i>
             <p>Iniciando sesión</p>
         </div>
+
+        <div class="redes">
+            <h3>O inicia sesión con:</h3>
+
+            <div class="google">
+                <button id="btnGoogle" onclick="loginConGoogle()">
+                    <i class="devicon-google-plain"></i>
+                </button>
+            </div>
+<!--
+            <div class="facebook">
+                <button>
+                    <i class="devicon-facebook-plain"></i>
+                </button>
+            </div>
+        </div>
+-->
+        <script type="module">
+            import { loginConGoogle } from "./loginGoogle.js";
+
+            document.getElementById("btnGoogle").addEventListener("click", () => {
+                loginConGoogle();
+            });
+        </script>
 
 
 

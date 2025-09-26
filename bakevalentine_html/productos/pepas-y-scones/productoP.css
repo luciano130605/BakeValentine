@@ -1,18 +1,4 @@
-.atras {
-  position: fixed;
-  width: 38px;
-  height: 39px;
-  top: 7px;
-  left: 9px;
-  background-color: #c9e7ff;
-  border-radius: 19.2px / 19.7px;
-  border: none;
-  cursor: pointer;
-}
 
-.fa-solid.fa-arrow-left {
-  color: #3877AA;
-}
 
 body {
   background-color: #3877aa;
@@ -23,6 +9,8 @@ body {
   margin: 0;
   font-family: "Inter", sans-serif;
 }
+
+
 
 .titulo {
   font-family: "Inter-SemiBold", Helvetica;
